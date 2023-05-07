@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://krishnendhuk165836:krishnendhuk165836@cluster0.8jscmnw.mongodb.net/temple?retryWrites=true&w=majority')
+
  
 const schema = mongoose.Schema
 
 const registerSchema = new schema({
-        username:{type:String},
+        name:{type:String},
         email:{type:String},
-        hname:{type:String},
+        house_name:{type:String},
         place:{type:String},
-        phone:{type:String},
-        password:{type:String},
-        rdate:{type:String},
+        phone_no:{type:String},
+        login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
+        pin:{type:String},
         Status:{type:String},
 })
 

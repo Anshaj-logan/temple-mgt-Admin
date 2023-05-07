@@ -1,15 +1,12 @@
-const mongoose=require('mongoose')
-mongoose.connect('mongodb+srv://krishnendhuk165836:krishnendhuk165836@cluster0.8jscmnw.mongodb.net/temple?retryWrites=true&w=majority')
+const mongoose = require('mongoose')
+const schema = mongoose.Schema
 
-
-const schema= mongoose.Schema
-
-const loginschema=new schema({
-       username:{type:String},
-       password:{type:String}
-
+const loginSchema  = new schema({
+    username: {type: String, required:true},
+    password: {type: String, required:true},
+    status: {type:String, required: true},
+    role: {type:String, required: true},    
 })
 
-const loginmodel= mongoose.model('login_tb',loginschema)
-
-module.exports= loginmodel
+var loginData = mongoose.model('login_tb', loginSchema)
+module.exports = loginData 
