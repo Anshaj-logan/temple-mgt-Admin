@@ -1,0 +1,55 @@
+body{
+    background-color: black;
+}
+#reg{
+    background-image: url("img/images/diwali-.webp");
+    background-size: cover;
+}
+
+.form{
+    margin-top: 25px;
+    margin-right: 200px;
+    margin-left: 700px;
+    height:80% ;
+    margin-bottom: 25px;
+    /* border-bottom-left-radius: 40px; 
+    border-top-right-radius: 40px; */
+    
+}
+input[type=text]{
+    box-sizing: border-box;
+    padding: 14px 20px; 
+    font-size: 15px;
+   font-family: ariel;
+    font-weight: bolder;
+    margin-left:10px;
+    margin-right: 10px;
+}
+p{
+    text-align: center;
+}
+v{
+    color: white;
+}
+span{
+    color: #ffb03b;
+}
+ .log-btn{
+    background: #ffb03b;
+     color: black;
+     border-radius: 50px;
+  font-size: 5px;
+   
+ }
+ /* .btn{
+    background: #ffb03b;
+    color: black;
+ } */
+ h3{
+    color: white;
+    text-align: center;
+ }
+ h6{
+    color: #ffb03b;
+    text-align: center;
+}

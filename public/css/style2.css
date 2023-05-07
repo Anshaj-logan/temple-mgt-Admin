@@ -1,0 +1,52 @@
+#bg{
+    background-image: url("/img/images/travelling-nepal.jpg");
+    background-size: cover;
+    
+    
+}
+#log{
+    background-color: black;
+    border: 1px solid black ;
+    margin-top: 50px;
+    margin-left: 800px;
+    height:500px;
+    width: 400px;
+    opacity: .8;
+    border-bottom-left-radius: 40px; 
+    border-top-right-radius: 40px;
+ 
+}
+input[type=text], input[type=password]{
+    box-sizing: border-box;
+    padding: 14px 20px;
+    border-radius: 5px;
+    width: 100%;
+    height: 25%;
+    font-size: 15px;
+   font-family: ariel;
+    font-weight: bolder;
+}
+.log-btn{
+    /* box-sizing: border-box; */
+    padding: 14px 20px; 
+     border-radius: 5px;
+    width: 100%;
+    height: 10%;
+    font-size: 20px;
+    font-family: ariel;
+    font-weight: bolder;
+    background: #ffb03b;
+     color: black;
+    
+}
+a{
+    color: white;
+}
+h3{
+    color: #ffb03b;
+    font-family: Ariel;
+}
+h6{
+    color: #ffb03b;
+    text-align: center;
+}
