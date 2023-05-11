@@ -15,6 +15,7 @@ const booking = require('./src/routers/booking')
 const pooja = require('./src/routers/poojarout')
 const RegisterRouter = require('./src/routers/api/RegisterRouter')
 const signinRouter = require('./src/routers/api/signinRouter')
+const userRouter = require('./src/routers/api/userRouter')
 app.use(express.static('./public'))
 app.set('view engine','ejs')
 app.set('views','./src/views')
@@ -66,6 +67,7 @@ app.use((req, res, next) => {
 
 app.use('/api/register/',RegisterRouter)
 app.use('/api/login/',signinRouter)
+app.use('/api/user/',userRouter)
   
 
 
