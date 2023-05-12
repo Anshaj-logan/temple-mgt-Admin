@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 const csaddschema = new schema({
+    login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
     csname:{type:String},
     email:{type:String},
     hname:{type:String},
@@ -12,7 +13,7 @@ const csaddschema = new schema({
     phone:{type:String},
     commitee:{type:String},
     jdate:{type:String},
-    password:{type:String},
+    
 
 
 })

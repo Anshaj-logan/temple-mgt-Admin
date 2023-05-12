@@ -180,39 +180,31 @@
                     <th>Place</th>
                     <!-- <th>Pin</th> -->
                    <th>Phone</th>  
-                   <th>date</th> 
-                   <!-- <th>Action</th>  -->
+                   <th>Action</th> 
                   </tr>
                 </thead>
                 <tbody>
                   <% for(i=0;i<data.length;i++){%>
                   <tr>
-                    <td><%= data[i].username%></td>
+                    <td><%= data[i].name%></td>
                     <!-- <td><%= data[i].age%></td> -->
                     <td><%= data[i].email%></td>
-                    <td><%= data[i].hname%></td>
+                    <td><%= data[i].house_name%></td>
                     <td><%= data[i].place%></td>
                     <!-- <td><%= data[i].pin%></td> -->
                     <td><%= data[i].phone%></td>
-                    <td><%= data[i].rdate%></td>
-                    <!-- <td>
-                      <%if(data[i].Status=="0"){%>
-                      <a href="/register/approve/<%= data[i]._id%>" class="btn btn-primary" type="button">Approve</a> 
-                       <a href="/register/reject/<%= data[i]._id%>" class="btn btn-danger" type="button">Rejcet</a>
+                    <td>
+                      <%if(data[i].status=="1"){%>
+                      <a href="/register/reject/<%= data[i]._id%>" class="btn btn-danger" >Delete</a> 
+                   
                     </td>
-                    <%}%>
-                    
-                    <%if(data[i].Status=="1"){%>
-                      
-                      Approved
-                      
-                      <%}else if(data[i].Status=="2"){%>
-                    Rejected
-                    
-                    <%}%>
-                  </td> -->
+                    <%}else{%>
+                      <a href="/register/approve/<%= data[i]._id%>" class="btn btn-primary" >Approve</a> 
+                      <a href="/register/reject/<%= data[i]._id%>" class="btn btn-danger" >Rejcet</a>
+                      <%}%>
+                  </td> 
                   </tr>
-                 <%}%>
+               <%}%>
                 </tbody>
               </table>
             </div>

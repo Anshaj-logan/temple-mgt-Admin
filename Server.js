@@ -16,6 +16,7 @@ const pooja = require('./src/routers/poojarout')
 const RegisterRouter = require('./src/routers/api/RegisterRouter')
 const signinRouter = require('./src/routers/api/signinRouter')
 const userRouter = require('./src/routers/api/userRouter')
+const poojaRouter = require('./src/routers/api/poojaRouter')
 app.use(express.static('./public'))
 app.set('view engine','ejs')
 app.set('views','./src/views')
@@ -68,18 +69,16 @@ app.use((req, res, next) => {
 app.use('/api/register/',RegisterRouter)
 app.use('/api/login/',signinRouter)
 app.use('/api/user/',userRouter)
+app.use('/api/pooja/',poojaRouter)
   
 
 
-  const MONGODB_URL=
-  "mongodb+srv://anshajmaitexa:1234@cluster0.x7mnswj.mongodb.net/temple?retryWrites=true&w=majority"
-  
-  
+  const MONGODB_URL="mongodb+srv://maneeshmaitexa:maneeshmaitexa@cluster0.fv75o1k.mongodb.net/TempleDB?retryWrites=true&w=majority"
   const port=2000;
   
   mongoose.connect(MONGODB_URL).then(()=>{
       app.listen(port,()=>{
-          console.log(`server running on port http://localhost:2000/admin`);
+          console.log(`server running on port http://localhost:2000/`);
       })
   }).catch((error)=>{
       console.log(` ${error} did not connect`); 

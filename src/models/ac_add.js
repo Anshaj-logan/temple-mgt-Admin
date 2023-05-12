@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 const addacSchema = new schema({
+        login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
         acname:{type:String},
         email:{type:String},
         hname:{type:String},

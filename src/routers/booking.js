@@ -22,16 +22,17 @@ booking.get('/viewschedule', async function (req,res) {
 })
 
 booking.post('/bookpooja',function (req,res) {
-    // console.log(req.body);
+    
     const data = {
+        user_id:req.params.user_id,
+        pooja_id:req.params.pooja_id,
         name:req.body.name,
-        pname:req.body.namep,
-        amount:req.body.cash,
-        bdate:req.body.dateb,
+        bdate:req.body.date,
         nakshathra:req.body.nakshathra,
         
         
     }
+    console.log(data);
     booking(data).save().then((data)=>{
         res.status(200).json({
             success:true,
@@ -40,6 +41,13 @@ booking.post('/bookpooja',function (req,res) {
                    message:"successful"
         })
 
+    }).catch((err)=>{
+        res.status(400).json({
+            success:false,
+                   error:true,
+                   data:err,    
+                   message:"error"
+        })
     })
 
 })

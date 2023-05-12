@@ -1,5 +1,6 @@
 const express = require('express')
 const registermodel = require('../models/register')
+const login = require('../models/login')
 const reg_rout = express.Router()
 reg_rout.use(express.static('./public'))
 
@@ -37,8 +38,33 @@ reg_rout.post('/regadd', function(req,res){
 })
 reg_rout.get('/regview',async function(req,res){
     try {
-
-        const data=await registermodel.find()
+        const data = await  login.aggregate([
+            {
+                '$lookup': {
+                  'from': 'register_tbs', 
+                  'localField': '_id', 
+                  'foreignField': 'login_id', 
+                  'as': 'data'
+                }
+              },
+            {
+              "$unwind": "$data"
+            },
+            {
+              "$group": {
+                "_id": "$_id",
+                "user_id": { "$first": "$data._id" },
+                "name": { "$first": "$data.name" },
+                "email": { "$first": "$data.email" },
+                "house_name": { "$first": "$data.house_name" },
+                "phone": { "$first": "$data.phone_no" },
+                "place": { "$first": "$data.place" },
+                "status": { "$first": "$status" },
+              }
+            }
+      
+          ])
+    // res.json({data})
         res.render('Viewuser',{data})
         
     } catch (error) {
@@ -49,11 +75,11 @@ reg_rout.get('/regview',async function(req,res){
 reg_rout.get('/approve/:id',function(req,res){
     const id=req.params.id
 const approved={
-    Status:"1"
+    status:"1"
    }
        
 
-   registermodel.updateOne({_id:id},{$set:approved}).then((data)=>{
+   login.updateOne({_id:id},{$set:approved}).then((data)=>{
     res.redirect('/register/regview')
 
    })
@@ -62,7 +88,7 @@ const approved={
 reg_rout.get('/reject/:id',function(req,res){
     const id=req.params.id
 const rejected={
-    Status:"2"
+    status:"2"
    }
        
 

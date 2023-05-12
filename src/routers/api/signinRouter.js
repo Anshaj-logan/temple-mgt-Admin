@@ -3,6 +3,8 @@ const signinRouter = express.Router()
 const bcrypt = require('bcryptjs')
 const login = require('../../models/login')
 const Reg = require('../../models/register')
+const Acc = require('../../models/ac_add')
+const Comm = require('../../models/cs_add')
 
 
 signinRouter.post("/", async (req, res) => {
@@ -38,46 +40,46 @@ signinRouter.post("/", async (req, res) => {
             }
            
         }
-        // else if (oldUser.role === '2') {
-        //     if(oldUser.status === '0'){
-        //         return res.status(400).json({ success: false, error: true,login_id: oldUser._id, message: "Waiting for admins approval" })
-        //     }
-        //     else{
-        //         const studentDetails = await cmpReg.findOne({ login_id: oldUser._id })
-        //         console.log(studentDetails);
-        //         if (studentDetails) {
-        //             return res.status(200).json({
-        //                 success: true,
-        //                 error: false,
-        //                 username: oldUser.username,
-        //                 role: oldUser.role,
-        //                 status:oldUser.status,
-        //                 login_id: oldUser._id,
-        //                 company_id: studentDetails._id
-        //             })
-        //         }
-        //     }
-        // }
-        // else if (oldUser.role === '3') {
-        //     if(oldUser.status === '0'){
-        //         return res.status(400).json({ success: false, error: true,login_id: oldUser._id, message: "Waiting for admins approval" })
-        //     }
-        //     else{
-        //         const workerDetails = await registerWorker.findOne({ login_id: oldUser._id })
-        //         console.log(workerDetails);
-        //         if (workerDetails) {
-        //             return res.status(200).json({
-        //                 success: true,
-        //                 error: false,
-        //                 username: oldUser.username,
-        //                 role: oldUser.role,
-        //                 status:oldUser.status,
-        //                 login_id: oldUser._id,
-        //                 worker_id: workerDetails._id
-        //             })
-        //         }
-        //     }
-        // }     
+        else if (oldUser.role === '2') {
+            if(oldUser.status === '0'){
+                return res.status(400).json({ success: false, error: true,login_id: oldUser._id, message: "Waiting for admins approval" })
+            }
+            else{
+                const studentDetails = await Acc.findOne({ login_id: oldUser._id })
+                console.log(studentDetails);
+                if (studentDetails) {
+                    return res.status(200).json({
+                        success: true,
+                        error: false,
+                        username: oldUser.username,
+                        role: oldUser.role,
+                        status:oldUser.status,
+                        login_id: oldUser._id,
+                        accountatnt_id: studentDetails._id
+                    })
+                }
+            }
+        }
+        else if (oldUser.role === '3') {
+            if(oldUser.status === '0'){
+                return res.status(400).json({ success: false, error: true,login_id: oldUser._id, message: "Waiting for admins approval" })
+            }
+            else{
+                const workerDetails = await Comm.findOne({ login_id: oldUser._id })
+                console.log(workerDetails);
+                if (workerDetails) {
+                    return res.status(200).json({
+                        success: true,
+                        error: false,
+                        username: oldUser.username,
+                        role: oldUser.role,
+                        status:oldUser.status,
+                        login_id: oldUser._id,
+                        staff_id: workerDetails._id
+                    })
+                }
+            }
+        }     
        
         else {
 
